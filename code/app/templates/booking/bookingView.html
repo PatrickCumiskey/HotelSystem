@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title_page %}
+ Bookings
+{% endblock %}{% block container %}
+ <div class="container">
+   <h2>Your Bookings</h2>
+   {% from "macros/flash.html" import render_flashed_messages %}
+   {{ render_flashed_messages() }}
+   {% if result %}
+     {% for booking in result %}
+       <table class="table">
+         {% for key, value in booking.items() %}
+           <tr>
+             <th> {{ key }} </th>
+             <td> {{ value }} </td>
+           </tr>
+         {% endfor %}
+       </table>
+     {% endfor %}
+   {% endif %}
+ </div>
+{% endblock %}

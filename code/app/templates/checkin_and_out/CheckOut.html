@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title_page %}
+    CheckOut
+{% endblock %}
+{% block container %}
+    <div class="container">
+    {% from "macros/flash.html" import render_flashed_messages %}
+    {{ render_flashed_messages() }}
+    <form method="POST">
+        {{ fm.csrf_token }}
+        {{ wtf.form_field(fm.credit_num) }}
+        <input class="btn btn-primary" type="submit" value="Insert Room Card">
+    </form>
+    </div>
+{% endblock %}

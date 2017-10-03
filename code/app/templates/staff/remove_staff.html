@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title_page %}
+  Register
+{% endblock %}
+
+{% block container %}
+  <div class="container">
+    {% from "macros/flash.html" import render_flashed_messages %}
+    {{ render_flashed_messages() }}
+    <form class="" action="/staff/remove_staff" method="POST">
+        {{ form.csrf_token }}
+        {{ wtf.form_field(form.email) }}
+      <input class="btn btn-primary" type="submit" value="Delete">
+    </form>
+  </div>
+{% endblock %}

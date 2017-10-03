@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <form action="/accounts/makebooking" method="POST">
+
+        <label>Select Room Type :</label>
+            <select name="room_type" width="300px">
+            {% for x in room_list %}
+            <option value="{{ x.id }}">{{ x.type }}</option>
+            {% endfor %}
+            </select>
+        <label for="meeting">Start Date : </label><input name="start_date" type="date" value="2017-04-25"/>
+        <label for="meeting">End Date : </label><input name="end_date" type="date" value="2017-04-26"/>
+      <input type="text" name="credit_card" placeholder="credit_card">
+
+
+      <input type="submit" value="BookRoom">
+    </form>
+
+{% endblock %}

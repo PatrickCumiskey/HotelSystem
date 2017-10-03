@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  {# Default title - replace the whole title or just the page title #}
+  RyanGround | {% block title_page %}Home{% endblock %}
+{% endblock %}
+
+{% block head %}
+  {{super()}}
+  {# Default head for all pages #}
+  {% include "layout/header.html" %}
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  {# Default styles for all pages #}
+  <link rel="stylesheet" type="text/css"
+        href="{{url_for('static', filename='app/css/style.css')}}">
+{% endblock %}
+
+{% block navbar %}
+  {% include "layout/nav.html" %}
+{% endblock %}
+
+{% block content %}
+  <div id="content">
+    {% block container %}
+      {# Default template with simple text #}
+      <p>{{text|safe}}</p>
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "layout/footer.html" %}
+{% endblock %}

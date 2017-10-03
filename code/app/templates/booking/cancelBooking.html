@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+    <p> Please enter your creidt card number of the booking you wish to cancel</p>
+    <form action="/accounts/cancelbook" method="POST">
+        <input type="text" name="credit_card" placeholder="credit_card">
+
+        <label>Select Room Number:</label>
+
+        <select name="booked_room_number" width="300px">
+            {% for x in  bookings_room %}
+                <option value="{{ x }}" SELECTED>{{ x }}</option>
+            {% endfor %}
+
+        </select>
+
+        <label>Select Start Date:</label>
+        <select name="booked_start_date" width="300px">
+            {% for x in  bookings_start %}
+                <option value="{{ x }}" SELECTED>{{ x }}</option>
+            {% endfor %}
+
+        </select>
+
+        <input type="submit" value="CancelRoom">
+
+
+    </form>
+
+{% endblock %}

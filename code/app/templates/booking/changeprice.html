@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <form action="/accounts/changeprice" method="POST">
+
+        <label>Select Room Type :</label>
+        <select name="room_id" width="300px">
+            {% for x in room_list %}
+                <option value="{{ x.id  }}" SELECTED>{{ x.type }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="weekday_price" placeholder="weekday_price">
+        <input type="text" name="weekend_price" placeholder="weekend_price">
+
+
+        <input type="submit" value="ChangePrice">
+    </form>
+
+{% endblock %}

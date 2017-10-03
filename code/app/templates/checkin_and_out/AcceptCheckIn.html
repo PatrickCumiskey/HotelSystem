@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block container %}
+
+<h1>Welcome
+    <span style="color: blue" id="name">
+        {{user.first_name}} {{user.last_name}}
+    </span>to our HOTEL
+</h1>
+<label>Booking Records</label>
+<hr>
+
+<table cellpadding="2">
+    {% for s in bookings %}
+    <tr>
+        <td><b>Full name:</b> {{s.user.details.first_name}} {{s.user.details.last_name}}</td>
+        <td><b>Room Type:</b> {{s.room.room_price.type}}</td>
+        <td><b>Room Number:</b> {{s.room.number}}</td>
+    </tr>
+    <tr>
+        <td><b>Start Date:</b> {{s.start_date}}</td>
+        <td><b>End Date:</b> {{s.end_date}}</td>
+        {% if s.room.availability == 'Y' %}
+            <td>
+                <form method="POST" action="checkin">
+                     <input class="btn btn-primary" type="submit" value="submit">
+                     <input name="r_num" type="hidden" value="{{ s.room.number }}">
+                </form>
+            </td>
+        {% else %}
+            <td><b>Checked In</b></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

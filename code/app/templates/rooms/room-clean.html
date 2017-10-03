@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title_page %}
+  Room Clean Status
+{% endblock %}
+
+{% block container %}
+  <div class="container">
+    {% from "macros/flash.html" import render_flashed_messages %}
+    {{ render_flashed_messages() }}
+    <form class="" action="room-clean" method="POST">
+        {{ form.csrf_token }}
+        {{ wtf.form_field(form.number) }}
+        {% for subfield in form.clean %}
+        <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+        </tr>
+        {% endfor %}
+        <br>
+        {% for subfield in form.available %}
+        <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+        </tr>
+        {% endfor %}
+        <br>
+      <input class="btn btn-primary" type="submit" value="submit">
+    </form>
+  </div>
+{% endblock %}

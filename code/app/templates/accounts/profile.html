@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title_page %}
+  Edit Profile
+{% endblock %}
+
+{% block container %}
+  <div class="container">
+    <h2>Profile</h2>
+    {% from "macros/flash.html" import render_flashed_messages %}
+    {{ render_flashed_messages() }}
+    {% if user.details %}
+      <p>{{user.details.first_name}}</p>
+      <p>{{user.details.last_name}}</p>
+      <p>{{user.details.contact_number}}</p>
+      <a href="{{ url_for('edit_profile', id=user.id) }}" class="btn btn-primary">Edit</a>
+    {% else %}
+      <a href="{{ url_for('edit_profile', id=user.id) }}" class="btn btn-primary">Create Profile</a>
+    {% endif %}
+  </div>
+{% endblock %}
